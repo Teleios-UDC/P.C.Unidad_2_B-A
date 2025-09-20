@@ -8,7 +8,7 @@ import pc_u2_tiendainformatica.Exceptions.DomainException;
 
 public class Producto {
     // Identidad única
-       
+        private final String idCliente;
         private final String codigo;       
         private String categoria;
         private String nombre;
@@ -17,7 +17,10 @@ public class Producto {
 
         // Constructor con validacion y variantes 
     public Producto( String codigo, String categoria, String nombre, String modelo, String descripcion) {
-          
+        
+            if (idCliente == null || idCliente.isBlank())
+                throw new DomainException("El ID del cliente no puede estar vacío.");
+
                 if (codigo == null || codigo.isBlank())
                     throw new DomainException("El código del producto no puede estar vacío.");
                     if (categoria == null || categoria.isBlank())
@@ -27,7 +30,7 @@ public class Producto {
                             if (modelo == null || modelo.isBlank())
                                 throw new DomainException("El modelo es obligatorio.");
 
-          
+            this.idCliente = idCliente;
             this.codigo = codigo;
             this.categoria = categoria;
             this.nombre = nombre;
@@ -45,8 +48,9 @@ public class Producto {
 
             // Getters
 
-
-
+            public String getIdCliente() {
+                return idCliente;
+            }
             public String getCodigo() {
                 return codigo;
             }
