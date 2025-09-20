@@ -1,5 +1,5 @@
 
-package pc_u2_tiendainformatica.ValueObjects;
+package pc_u2_tiendainformatica.domain.valueobjects;
 //importamos LocalDate, ya que tenemos un atributo que usara fecha
 import java.time.LocalDate;
 //Usamos final, para mantener mejor el diseño de dominio

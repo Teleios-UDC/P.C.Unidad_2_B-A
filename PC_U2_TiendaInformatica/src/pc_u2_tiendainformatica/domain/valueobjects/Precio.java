@@ -1,5 +1,5 @@
 
-package pc_u2_tiendainformatica.ValueObjects;
+package pc_u2_tiendainformatica.domain.valueobjects;
 //Segun lo investigado, poner la clase en final no es obligatorio, per el uso de este, 
 //permite forzar la inmutabildiad y asegudar el diseño de dominio
 

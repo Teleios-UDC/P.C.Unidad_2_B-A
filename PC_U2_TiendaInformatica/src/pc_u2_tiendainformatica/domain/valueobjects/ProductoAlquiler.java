@@ -1,5 +1,5 @@
 
-package pc_u2_tiendainformatica.ValueObjects;
+package pc_u2_tiendainformatica.domain.valueobjects;
 
 //Usamos final para mantener el diseño de dominio
 public final class ProductoAlquiler {

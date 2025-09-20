@@ -1,4 +1,4 @@
-package pc_u2_tiendainformatica.ServiciosDeDominio;
+package pc_u2_tiendainformatica.domain.services;
 import pc_u2_tiendainformatica.Entidades.Venta;
 
 public class ServicioDeVenta {
