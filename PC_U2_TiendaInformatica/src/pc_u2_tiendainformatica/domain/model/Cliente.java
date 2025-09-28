@@ -7,54 +7,62 @@ package pc_u2_tiendainformatica.domain.model;
 import pc_u2_tiendainformatica.domain.exceptions.DomainException;
 
 
+
+
 public class Cliente {
-  
+
+    private String  idCliente; 
     private String nombre;
-    private String apellido;
-    private String correo;
     private String telefono;
+    private String direccion;
 
-    // CoOnstructor con validaciones 
-    public Cliente(String nombre, String apellido, String correo, String telefono) {
+    public Cliente(String idCliente, String nombre, String telefono, String direccion) {
+        this.idCliente = idCliente; 
         
-            if (nombre == null || nombre.isBlank())
-                throw new DomainException("El nombre es obligatorio.");
-                if (apellido == null || apellido.isBlank())
-                    throw new DomainException("El apellido es obligatorio.");
-                    if (correo == null || !correo.contains("@"))
-                        throw new DomainException("El correo electrónico no es válido.");
-                        if (telefono == null || telefono.isBlank())
-                        throw new DomainException("El teléfono es obligatorio.");
-
+        if (nombre == null || nombre.isBlank())
+            throw new DomainException("El nombre es obligatorio.");
+        if (telefono == null || telefono.isBlank())
+            throw new DomainException("El teléfono es obligatorio.");
+        if (direccion == null || direccion.isBlank())
+            throw new DomainException("La dirección es obligatoria.");
+        this.idCliente = idCliente; 
         this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
         this.telefono = telefono;
+        this.direccion = direccion;
     }
 
-    // Métodos para actualizar datos con validación
-    public void RenameCliente(String nuevoNombre) {
+    public void NuevoNombreCliente(String nuevoNombre) {
         if (nuevoNombre == null || nuevoNombre.isBlank())
             throw new DomainException("El nombre no puede estar vacío.");
         this.nombre = nuevoNombre;
     }
-    // Gett
-            public String getNombre() {
-                return nombre;
-            }
-
-            public String getApellido() {
-                return apellido;
-            }
-
-            public String getCorreo() {
-                return correo;
-            }
-
-            public String getTelefono() {
-                return telefono;
-            }
-
-   
     
+    public void newTelefono(String nuevoTelefono) {
+        if (nuevoTelefono == null || nuevoTelefono.isBlank())
+            throw new DomainException("El teléfono no puede estar vacío.");
+        this.telefono = nuevoTelefono;
+    }
+    
+    public void newDireccion(String nuevaDireccion) {
+        if (nuevaDireccion == null || nuevaDireccion.isBlank())
+            throw new DomainException("La dirección no puede estar vacía.");
+        this.direccion = nuevaDireccion;
+    }
+
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+    
+    public String getDireccion() {
+        return direccion;
+    }
 }
