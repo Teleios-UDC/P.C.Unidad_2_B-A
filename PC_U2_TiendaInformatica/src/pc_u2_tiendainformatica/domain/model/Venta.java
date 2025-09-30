@@ -67,4 +67,3 @@ public class Venta {
         this.precio = new Precio(valorTotal);
     }
 }
-
