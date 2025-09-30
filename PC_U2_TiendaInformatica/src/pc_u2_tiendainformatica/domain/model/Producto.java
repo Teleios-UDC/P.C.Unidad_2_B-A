@@ -41,12 +41,19 @@ public class Producto {
                                 
                                 
             //Invariantes con las consistencias agregadas
+            //Regla de para productos de Alta Tecnologia
             if (altaTecnologia != null && categoria != CategoriaEnum.CPU && categoria != CategoriaEnum.DISCO_DURO) {
                 throw new ProductoException("Solos los productos de categoria CPU o DISCO DURO pueden ser de Alta Tecnologia");
             }
             
+            //Regla para productos de Alquiler
             if (alquiler != null && categoria != CategoriaEnum.MONITOR && categoria != CategoriaEnum.DISCO_DURO) {
                 throw new ProductoException("Solos los productos de categoria MONITOR o DISCO DURO se pueden alquilar");
+            }
+            
+            //Regla de disponibilidad de alquiler, Si 'alquiler' es nulo, no puede estar disponible para alquiler.
+            if (alquiler == null && disponibleAlquiler == DisponibilidadAlquilerEnum.SE_ENCUENTRA_DISPONIBLE_PARA_ALQUILER) {
+                throw new ProductoException("Un producto sin informacion de alquiler no puede estar marcado como disponible disponible");
             }
 
             this.idProducto = idProducto;
