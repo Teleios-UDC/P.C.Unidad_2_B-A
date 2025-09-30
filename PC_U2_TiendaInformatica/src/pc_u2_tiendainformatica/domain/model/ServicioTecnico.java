@@ -10,6 +10,7 @@ import pc_u2_tiendainformatica.domain.exceptions.ServicioTecnicoException;
 
 public class ServicioTecnico {
     // Identidad compuesta
+    private final String idServicio;
     private final String idCliente;
     private final String idProducto;
 
@@ -20,7 +21,7 @@ public class ServicioTecnico {
   
 
     // Constructor con validación
-    public ServicioTecnico(String idCliente, String idProducto, String detallesServicio, LocalDate fecha) {
+    public ServicioTecnico(String idServicio, String idCliente, String idProducto, String detallesServicio, LocalDate fecha) {
         if (idCliente == null || idCliente.isBlank())
                 throw new ServicioTecnicoException("El ID de Cliente no puede estar vacío");
             if (idProducto == null || idProducto.isBlank())
@@ -30,6 +31,7 @@ public class ServicioTecnico {
                     if (fecha == null)
                             throw new ServicioTecnicoException("La fecha no puede ser nula");
 
+        this.idServicio = idServicio;
         this.idCliente = idCliente;
         this.idProducto = idProducto;
         this.detallesServicio = detallesServicio;
@@ -64,5 +66,10 @@ public class ServicioTecnico {
             return fecha;
         }
 
+         public String getIdServicio() {
+            return idServicio;
+        }
+        
+        
    
 }
