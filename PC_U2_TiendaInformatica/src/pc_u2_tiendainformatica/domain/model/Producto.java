@@ -39,6 +39,15 @@ public class Producto {
                                 if (precio == null)
                                     throw new ProductoException("E precio no puede estar vacio.");
                                 
+                                
+            //Invariantes con las consistencias agregadas
+            if (altaTecnologia != null && categoria != CategoriaEnum.CPU && categoria != CategoriaEnum.DISCO_DURO) {
+                throw new ProductoException("Solos los productos de categoria CPU o DISCO DURO pueden ser de Alta Tecnologia");
+            }
+            
+            if (alquiler != null && categoria != CategoriaEnum.MONITOR && categoria != CategoriaEnum.DISCO_DURO) {
+                throw new ProductoException("Solos los productos de categoria MONITOR o DISCO DURO se pueden alquilar");
+            }
 
             this.idProducto = idProducto;
             this.codigo = codigo;
