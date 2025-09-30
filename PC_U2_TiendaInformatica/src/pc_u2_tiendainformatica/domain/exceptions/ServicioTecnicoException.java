@@ -10,6 +10,7 @@ package pc_u2_tiendainformatica.domain.exceptions;
  */
 public class ServicioTecnicoException extends RuntimeException {
     public ServicioTecnicoException(String mensaje) {
-        super(mensaje);
+        super("OJOOO: " +mensaje); 
+
     }
 }
