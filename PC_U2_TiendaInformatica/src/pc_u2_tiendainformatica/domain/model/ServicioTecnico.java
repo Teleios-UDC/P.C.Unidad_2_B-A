@@ -9,45 +9,60 @@ import pc_u2_tiendainformatica.domain.exceptions.DomainException;
 
 
 public class ServicioTecnico {
-    private final String detalleServicio;
-    private final LocalDate fecha;
-    private final String productoAsociado;
-    private final String clienteAsociado;
+    // Identidad compuesta
+    private final String idCliente;
+    private final String idProducto;
 
-    // Constructor con validaciones (invariantes de negocio)
-    public ServicioTecnico(String detalleServicio, LocalDate fecha, String productoAsociado, String clienteAsociado) {
-        if (detalleServicio == null || detalleServicio.isBlank())
-            throw new DomainException("El detalle del servicio no puede estar vacío.");
-            if (fecha == null)
-                throw new DomainException("La fecha del servicio es obligatoria.");
-                if (fecha.isAfter(LocalDate.now()))
-                    throw new DomainException("La fecha del servicio no puede ser futura.");
-                    if (productoAsociado == null || productoAsociado.isBlank())
-                        throw new DomainException("El producto asociado es obligatorio.");
-                        if (clienteAsociado == null || clienteAsociado.isBlank())
-                            throw new DomainException("El cliente asociado es obligatorio.");
+    // Atributos propios de la relación
+    private String detallesServicio;
+    private LocalDate fecha;
+    
+  
 
-        this.detalleServicio = detalleServicio;
+    // Constructor con validación
+    public ServicioTecnico(String idCliente, String idProducto, String detallesServicio, LocalDate fecha) {
+        if (idCliente == null || idCliente.isBlank())
+                throw new DomainException("El ID de Cliente no puede estar vacío");
+            if (idProducto == null || idProducto.isBlank())
+                    throw new DomainException("El ID de Producto no puede estar vacío");
+                if (detallesServicio == null || detallesServicio.isBlank())
+                        throw new DomainException("Los detalles del servicio no pueden estar vacíos");
+                    if (fecha == null)
+                            throw new DomainException("La fecha no puede ser nula");
+
+        this.idCliente = idCliente;
+        this.idProducto = idProducto;
+        this.detallesServicio = detallesServicio;
         this.fecha = fecha;
-        this.productoAsociado = productoAsociado;
-        this.clienteAsociado = clienteAsociado;
-    }
-//get
-
-    public String getDetalleServicio() {
-        return detalleServicio;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
+    // Métodos 
+ 
+    public void actualizarDetalles(String nuevosDetalles) {
+        if (nuevosDetalles == null || nuevosDetalles.isBlank())
+                throw new DomainException("Los detalles del servicio no pueden estar vacíos");
+                    this.detallesServicio = nuevosDetalles;
     }
 
-    public String getProductoAsociado() {
-        return productoAsociado;
+    public void reprogramarFecha(LocalDate nuevaFecha) {
+        if (nuevaFecha == null)
+                throw new DomainException("La nueva fecha no puede ser nula");
+                    this.fecha = nuevaFecha;
     }
 
-    public String getClienteAsociado() {
-        return clienteAsociado;
-    }
-        
+        // Get
+        public String getIdCliente() {
+            return idCliente;
+        }
+        public String getIdProducto() {
+            return idProducto;
+        }
+        public String getDetallesServicio() {
+            return detallesServicio;
+        }
+        public LocalDate getFecha() {
+            return fecha;
+        }
+
+   
 }
