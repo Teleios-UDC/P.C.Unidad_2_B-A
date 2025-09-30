@@ -4,7 +4,7 @@
  */
 package pc_u2_tiendainformatica.domain.model;
 
-import pc_u2_tiendainformatica.domain.exceptions.DomainException;
+import pc_u2_tiendainformatica.domain.exceptions.EmpresaFabricanteException;
 
 
 public class EmpresaFabricante {
@@ -20,16 +20,16 @@ public class EmpresaFabricante {
         // Constructor con validación
     public EmpresaFabricante(String idFabricante, String nombre, String direccion, int numeroEmpleados) {
         if (idFabricante == null || idFabricante.isBlank()) {
-            throw new DomainException("El ID del fabricante no puede estar vacío");
+            throw new EmpresaFabricanteException("El ID del fabricante no puede estar vacío");
         }
             if (nombre == null || nombre.isBlank()) {
-                throw new DomainException("El nombre del fabricante no puede estar vacío");
+                throw new EmpresaFabricanteException("El nombre del fabricante no puede estar vacío");
             }
                 if (direccion == null || direccion.isBlank()) {
-                    throw new DomainException("La dirección del fabricante no puede estar vacía");
+                    throw new EmpresaFabricanteException("La dirección del fabricante no puede estar vacía");
                 }
                     if (numeroEmpleados < 1) {
-                        throw new DomainException("El fabricante debe tener al menos un empleado");
+                        throw new EmpresaFabricanteException("El fabricante debe tener al menos un empleado");
                     }
 
         this.idFabricante = idFabricante;
@@ -40,7 +40,7 @@ public class EmpresaFabricante {
  // Cambiar nombre del fabricante
     public void cambiarNombre(String nuevoNombre) {
         if (nuevoNombre == null || nuevoNombre.isBlank()) 
-            throw new DomainException("El nombre no puede estar vacío");
+            throw new EmpresaFabricanteException("El nombre no puede estar vacío");
         
         this.nombre = nuevoNombre;
     }
@@ -48,14 +48,14 @@ public class EmpresaFabricante {
     // Actualizar la dirección
     public void actualizarDireccion(String nuevaDireccion) {
         if (nuevaDireccion == null || nuevaDireccion.isBlank()) 
-            throw new DomainException("La dirección no puede estar vacía");
+            throw new EmpresaFabricanteException("La dirección no puede estar vacía");
         this.direccion = nuevaDireccion;
     }
 
     // Actualizar número de empleados
     public void actualizarNumeroEmpleados(int nuevoNumero) {
         if (nuevoNumero < 1) 
-            throw new DomainException("El fabricante debe tener al menos un empleado");
+            throw new EmpresaFabricanteException("El fabricante debe tener al menos un empleado");
         this.numeroEmpleados = nuevoNumero;
     }
 

@@ -4,7 +4,7 @@
  */
 package pc_u2_tiendainformatica.domain.model;
 
-import pc_u2_tiendainformatica.domain.exceptions.DomainException;
+import pc_u2_tiendainformatica.domain.exceptions.ClienteException;
 
 
 
@@ -20,11 +20,11 @@ public class Cliente {
         this.idCliente = idCliente; 
         
         if (nombre == null || nombre.isBlank())
-            throw new DomainException("El nombre es obligatorio.");
+            throw new ClienteException("El nombre es obligatorio.");
             if (telefono == null || telefono.isBlank())
-                throw new DomainException("El teléfono es obligatorio.");
+                throw new ClienteException("El teléfono es obligatorio.");
                 if (direccion == null || direccion.isBlank())
-                    throw new DomainException("La dirección es obligatoria.");
+                    throw new ClienteException("La dirección es obligatoria.");
         this.idCliente = idCliente; 
         this.nombre = nombre;
         this.telefono = telefono;
@@ -33,19 +33,19 @@ public class Cliente {
 
     public void NuevoNombreCliente(String nuevoNombre) {
         if (nuevoNombre == null || nuevoNombre.isBlank())
-            throw new DomainException("El nombre no puede estar vacío.");
+            throw new ClienteException("El nombre no puede estar vacío.");
         this.nombre = nuevoNombre;
     }
     
     public void newTelefono(String nuevoTelefono) {
         if (nuevoTelefono == null || nuevoTelefono.isBlank())
-            throw new DomainException("El teléfono no puede estar vacío.");
+            throw new ClienteException("El teléfono no puede estar vacío.");
         this.telefono = nuevoTelefono;
     }
     
     public void newDireccion(String nuevaDireccion) {
         if (nuevaDireccion == null || nuevaDireccion.isBlank())
-            throw new DomainException("La dirección no puede estar vacía.");
+            throw new ClienteException("La dirección no puede estar vacía.");
         this.direccion = nuevaDireccion;
     }
 

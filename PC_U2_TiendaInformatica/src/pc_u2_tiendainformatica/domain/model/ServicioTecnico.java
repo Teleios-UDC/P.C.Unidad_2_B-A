@@ -5,7 +5,7 @@
 package pc_u2_tiendainformatica.domain.model;
 
 import java.time.LocalDate;
-import pc_u2_tiendainformatica.domain.exceptions.DomainException;
+import pc_u2_tiendainformatica.domain.exceptions.ServicioTecnicoException;
 
 
 public class ServicioTecnico {
@@ -22,13 +22,13 @@ public class ServicioTecnico {
     // Constructor con validación
     public ServicioTecnico(String idCliente, String idProducto, String detallesServicio, LocalDate fecha) {
         if (idCliente == null || idCliente.isBlank())
-                throw new DomainException("El ID de Cliente no puede estar vacío");
+                throw new ServicioTecnicoException("El ID de Cliente no puede estar vacío");
             if (idProducto == null || idProducto.isBlank())
-                    throw new DomainException("El ID de Producto no puede estar vacío");
+                    throw new ServicioTecnicoException("El ID de Producto no puede estar vacío");
                 if (detallesServicio == null || detallesServicio.isBlank())
-                        throw new DomainException("Los detalles del servicio no pueden estar vacíos");
+                        throw new ServicioTecnicoException("Los detalles del servicio no pueden estar vacíos");
                     if (fecha == null)
-                            throw new DomainException("La fecha no puede ser nula");
+                            throw new ServicioTecnicoException("La fecha no puede ser nula");
 
         this.idCliente = idCliente;
         this.idProducto = idProducto;
@@ -40,13 +40,13 @@ public class ServicioTecnico {
  
     public void actualizarDetalles(String nuevosDetalles) {
         if (nuevosDetalles == null || nuevosDetalles.isBlank())
-                throw new DomainException("Los detalles del servicio no pueden estar vacíos");
+                throw new ServicioTecnicoException("Los detalles del servicio no pueden estar vacíos");
                     this.detallesServicio = nuevosDetalles;
     }
 
     public void reprogramarFecha(LocalDate nuevaFecha) {
         if (nuevaFecha == null)
-                throw new DomainException("La nueva fecha no puede ser nula");
+                throw new ServicioTecnicoException("La nueva fecha no puede ser nula");
                     this.fecha = nuevaFecha;
     }
 
