@@ -9,7 +9,7 @@ import pc_u2_tiendainformatica.domain.valueobjects.Precio;
 import java.time.LocalDate;
 import java.util.List;
 /*
-  ServicioDeVenta sera creado para gestionar la realizacion de una venta
+  ServicioVenta sera creado para gestionar la realizacion de una venta
   incluyendo la validacion de productos y cantidades el calculo del total de la venta
   la creacion de la entidad Venta y la emision de un evento de dominio ProductoVendido
   
@@ -21,7 +21,7 @@ import java.util.List;
    en un sistema completo se necesitariann estas funcionalidades para asegurar la integridad
    y persistencia de los datos asi como para comunicar los cambios a otros sistemas o modulos
  */
-public class ServicioDeVenta {
+public class ServicioVenta {
 
     // Firma del metodo del servicio de dominio
     
