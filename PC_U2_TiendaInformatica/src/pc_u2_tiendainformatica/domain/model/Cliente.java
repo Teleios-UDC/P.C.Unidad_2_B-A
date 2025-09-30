@@ -21,10 +21,10 @@ public class Cliente {
         
         if (nombre == null || nombre.isBlank())
             throw new DomainException("El nombre es obligatorio.");
-        if (telefono == null || telefono.isBlank())
-            throw new DomainException("El teléfono es obligatorio.");
-        if (direccion == null || direccion.isBlank())
-            throw new DomainException("La dirección es obligatoria.");
+            if (telefono == null || telefono.isBlank())
+                throw new DomainException("El teléfono es obligatorio.");
+                if (direccion == null || direccion.isBlank())
+                    throw new DomainException("La dirección es obligatoria.");
         this.idCliente = idCliente; 
         this.nombre = nombre;
         this.telefono = telefono;
