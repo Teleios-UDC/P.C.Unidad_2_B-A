@@ -5,6 +5,8 @@
 package pc_u2_tiendainformatica.domain.model;
 import pc_u2_tiendainformatica.domain.Enum.*;
 import pc_u2_tiendainformatica.domain.exceptions.ProductoException;
+import pc_u2_tiendainformatica.domain.patrons.specifications.*;
+import pc_u2_tiendainformatica.domain.patrons.builders.*;
 
 import pc_u2_tiendainformatica.domain.valueobjects.*;
 public class Producto {
@@ -84,10 +86,25 @@ public class Producto {
     //metodo para asignar o reemplaza la información de alta tecnología del producto
 
      public void asignarAltaTec(ProductoAltaTecnologia newAlta) {
-        if (newAlta == null)
-            throw new ProductoException ("El nombre no puede estar vacío.");
-                this.altaTecnologia = newAlta;
+         EsAltaTecnologiaSpecification spec = new EsAltaTecnologiaSpecification();
+         
+         if(newAlta != null && !spec.isSatisfiedBy(this)) {
+             throw new ProductoException("Error: La categoria actual (" +this.categoria + ")no es elegible para alta tecnologia");
+         }
+         
+         this.altaTecnologia = newAlta;
+//        if (newAlta == null)
+//            throw new ProductoException ("El nombre no puede estar vacío.");
+//                this.altaTecnologia = newAlta;
     }
+     
+     public void asginarAlquiler(ProductoAlquiler newAlquiler) {
+         EsProductoAlquilerSpecification spec = new EsProductoAlquilerSpecification();
+         
+         if(newAlquiler != null && !spec.isSatisfiedBy(this)) {
+             throw new ProductoException("Error: La categoria actual (" +this.categoria + ")no es elegible para alquiler");
+         }
+     }
      //metodo para actualizar la informacion del alquiler asignado a un producto
       public void actualizarAlquiler(ProductoAlquiler newAlquiler) {
         if (newAlquiler == null)
