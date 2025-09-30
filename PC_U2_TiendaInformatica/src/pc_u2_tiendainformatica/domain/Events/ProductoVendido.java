@@ -46,7 +46,7 @@ public class ProductoVendido {
 
    @Override
     public String toString() {
-        return "ProductoVendido{" + "productoId=" + productoId + ", clienteId=" + clienteId + ", cantidad=" + cantidad + ", fecha=" + fecha + '}';
+        return "ProductoVendido{" + "ID del producto=" + productoId + ", ID cliente" + clienteId + ", cantidad" + cantidad + ", fecha" + fecha + '}';
     }
     
 }

@@ -10,6 +10,7 @@ package pc_u2_tiendainformatica.domain.exceptions;
  */
 public class ProveedorException extends RuntimeException {
     public ProveedorException(String mensaje) {
-        super(mensaje);
+        super("OJOOO: " +mensaje); 
+
     }
 }
