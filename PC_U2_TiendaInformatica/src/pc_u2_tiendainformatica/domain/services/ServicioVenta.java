@@ -31,7 +31,7 @@ public class ServicioVenta {
     private final ProductoRepository productoRepository;
     // Firma del metodo del servicio de dominio
 
-    public ServicioDeVenta(VentaRepository ventaRepository, ProductoRepository productoRepository) {
+    public ServicioVenta(VentaRepository ventaRepository, ProductoRepository productoRepository) {
         this.ventaRepository = ventaRepository;
         this.productoRepository = productoRepository;
     }
