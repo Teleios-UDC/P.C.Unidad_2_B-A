@@ -5,9 +5,13 @@ import pc_u2_tiendainformatica.domain.model.Producto;
 import pc_u2_tiendainformatica.domain.model.Venta;
 import pc_u2_tiendainformatica.domain.valueobjects.Cantidad;
 import pc_u2_tiendainformatica.domain.valueobjects.Precio;
+import pc_u2_tiendainformatica.domain.exceptions.VentaException;
+import pc_u2_tiendainformatica.domain.port.out.*;
+import pc_u2_tiendainformatica.domain.adapter.out.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 /*
   ServicioDeVenta sera creado para gestionar la realizacion de una venta
   incluyendo la validacion de productos y cantidades el calculo del total de la venta
@@ -23,7 +27,16 @@ import java.util.List;
  */
 public class ServicioDeVenta {
 
+    private final VentaRepository ventaRepository;
+    private final ProductoRepository productoRepository;
     // Firma del metodo del servicio de dominio
+
+    public ServicioDeVenta(VentaRepository ventaRepository, ProductoRepository productoRepository) {
+        this.ventaRepository = ventaRepository;
+        this.productoRepository = productoRepository;
+    }
+    
+    
     
     public Venta realizarVenta(String clienteId, List<Producto> productos, List<Cantidad> cantidades) {
 
@@ -58,8 +71,14 @@ public class ServicioDeVenta {
         }
         // Crearemos el objeto Precio con el total calculado
         Precio total = new Precio(totalValor);
-        // Crear la venta (ID estático para ejemplo)
-            Venta venta = new Venta("venta001", clienteId, LocalDate.now(),total);
+        // Crear la venta y Persistencia del Agregado venta
+        String idVenta = "V-" + UUID.randomUUID().toString().substring(0,8);
+        
+        Venta venta = new Venta(idVenta, clienteId, LocalDate.now(),total);
+        
+        Venta ventaGuardada = this.ventaRepository.salvar(venta);
+        
+            
     //4. Publicar un evento de Dominio
     //(El evento de dominio que tenemos que es ProductoVendido)
     
@@ -67,6 +86,6 @@ public class ServicioDeVenta {
 
     //5. Retornar el resultado de la operacion
     //(La venta ha sido Creada)
-    return venta;
+    return ventaGuardada;
 }
 }
