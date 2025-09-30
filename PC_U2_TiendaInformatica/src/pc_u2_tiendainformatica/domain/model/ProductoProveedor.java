@@ -3,46 +3,69 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package pc_u2_tiendainformatica.domain.model;
-
-import java.time.LocalDate;
-import pc_u2_tiendainformatica.domain.exceptions.DomainException;
-
 /**
  *
- * @author mezab
+ * @author be
  */
+import pc_u2_tiendainformatica.domain.exceptions.DomainException;
+import java.time.LocalDate;
+import pc_u2_tiendainformatica.domain.valueobjects.*;
+
+
 public class ProductoProveedor {
-     private final LocalDate fechaAdquisicion;
-    private final String productoAsociado;
-    private final String proveedorAsociado;
+    // Relación con entidades principales
+    private final String idProducto;   
+    private final String idProveedor;  
 
-    // Constructor con validaciones
-    public ProductoProveedor(LocalDate fechaAdquisicion, String productoAsociado, String proveedorAsociado) {
-        if (fechaAdquisicion == null)
-            throw new DomainException("La fecha de adquisición no puede ser nula.");
-            if (fechaAdquisicion.isAfter(LocalDate.now()))
-                throw new DomainException("La fecha de adquisición no puede ser futura.");
-                if (productoAsociado == null || productoAsociado.isBlank())
-                    throw new DomainException("El producto asociado es obligatorio.");
-                    if (proveedorAsociado == null || proveedorAsociado.isBlank())
-                        throw new DomainException("El proveedor asociado es obligatorio.");
+    // Atributos propios 
+    private LocalDate fechaAdquisicion;
+    //VO
+    private Precio precioCompra;
 
+    // Constructor con validación
+    public ProductoProveedor( String idProducto, String idProveedor,
+                             LocalDate fechaAdquisicion, Precio precioCompra) {
+            if (idProducto == null || idProducto.isBlank())
+                    throw new DomainException("El ID de Producto no puede estar vacío");
+                if (idProveedor == null || idProveedor.isBlank())
+                        throw new DomainException("El ID de Proveedor no puede estar vacío");
+                    if (fechaAdquisicion == null)
+                            throw new DomainException("La fecha de adquisición no puede ser nula");
+                        if (precioCompra == null)
+                                throw new DomainException("El precio de compra no puede ser nulo");
+
+        this.idProducto = idProducto;
+        this.idProveedor = idProveedor;
         this.fechaAdquisicion = fechaAdquisicion;
-        this.productoAsociado = productoAsociado;
-        this.proveedorAsociado = proveedorAsociado;
-    }
-//gett
-
-    public LocalDate getFechaAdquisicion() {
-        return fechaAdquisicion;
+        this.precioCompra = precioCompra;
     }
 
-    public String getProductoAsociado() {
-        return productoAsociado;
+    // Métodos 
+    public void actualizarPrecioCompra(Precio Precio) {
+        if (Precio == null)
+            throw new DomainException("El precio de compra no puede ser nulo");
+                this.precioCompra = Precio;
     }
 
-    public String getProveedorAsociado() {
-        return proveedorAsociado;
+    public void actualizarFechaAdquisicion(LocalDate fechaAdquisicion) {
+        if (fechaAdquisicion == null)
+            throw new DomainException("La fecha de adquisición no puede ser nula");
+                this.fechaAdquisicion = fechaAdquisicion;
     }
-    
+
+        // Getters
+     
+        
+        public String getIdProducto() {
+            return idProducto;
+        }
+        public String getIdProveedor() {
+            return idProveedor;
+        }
+        public LocalDate getFechaAdquisicion() {
+            return fechaAdquisicion;
+        }
+        public Precio getPrecioCompra() {
+            return precioCompra;
+    }
 }

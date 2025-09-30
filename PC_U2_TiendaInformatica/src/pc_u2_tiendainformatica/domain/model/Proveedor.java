@@ -8,41 +8,47 @@ import pc_u2_tiendainformatica.domain.exceptions.DomainException;
 
 
 public class Proveedor {
-    private final String idProveedor; 
-    private final String nif;         
-    private String direccion;
+    private String idProveedor;
+    private String NIF;
+    private String direccion; 
 
-    // Constructor con validaciones (invariantes de negocio)
-    public Proveedor(String idProveedor, String nif, String direccion) {
+    public Proveedor(String idProveedor, String NIF, String direccion) {
         if (idProveedor == null || idProveedor.isBlank())
-            throw new DomainException("El ID del proveedor no puede estar vacío.");
-            if (nif == null || nif.isBlank())
-                throw new DomainException("El NIF del proveedor no puede estar vacío.");
+            throw new DomainException ("El ID del proveedor no puede ser vacio."); 
+            if (NIF == null || NIF.isBlank())
+                throw new DomainException("El nif del proveedor no puede ser vacio");
                 if (direccion == null || direccion.isBlank())
-                    throw new DomainException("La dirección del proveedor es obligatoria.");
-
+                    throw new DomainException("El nif del proveedor no puede ser vacio");
         this.idProveedor = idProveedor;
-        this.nif = nif;
+        this.NIF = NIF;
         this.direccion = direccion;
     }
-
-    // Métodos para actualizar datos con validación
-    public void cambiarDireccion(String nuevaDireccion) {
-        if (nuevaDireccion == null || nuevaDireccion.isBlank())
-            throw new DomainException("La dirección no puede estar vacía.");
-        this.direccion = nuevaDireccion;
+    
+    //metodos 
+    
+    public void ActuaizarNIF (String NIF){
+    if (NIF == null || NIF.isBlank())
+        throw new DomainException ("El nif del proveedor no puede ser vacio");
+             this.NIF = NIF;
     }
-
+    
+    public void ActuaizarDireccion (String direccion){
+    if (direccion == null || direccion.isBlank())
+        throw new DomainException ("La direcciion del proveedor no puede ser vacio");
+             this.direccion = direccion;
+    }
+    
     public String getIdProveedor() {
         return idProveedor;
     }
 
-    public String getNif() {
-        return nif;
+    public String getNIF() {
+        return NIF;
     }
 
     public String getDireccion() {
         return direccion;
     }
+    
     
 }
