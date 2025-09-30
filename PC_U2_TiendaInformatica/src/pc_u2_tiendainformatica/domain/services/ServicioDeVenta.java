@@ -54,7 +54,7 @@ public class ServicioDeVenta {
             Producto producto = productos.get(i);
             // Obtener la cantidad 
             Cantidad cantidad = cantidades.get(i);
-            totalValor += producto.getPrecio().getValor() * cantidad.getValor();
+            totalValor += producto.getPrecio().getValor() * cantidad.getCantidad();
         }
         // Crearemos el objeto Precio con el total calculado
         Precio total = new Precio(totalValor);

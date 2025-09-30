@@ -21,6 +21,7 @@ public class ProductoProveedor {
     private LocalDate fechaAdquisicion;
     //VO
     private Precio precioCompra;
+    private Cantidad cantidad; 
 
     // Constructor con validación
     public ProductoProveedor( String idProducto, String idProveedor,
@@ -33,11 +34,14 @@ public class ProductoProveedor {
                             throw new ProductoProveedorException("La fecha de adquisición no puede ser nula");
                         if (precioCompra == null)
                                 throw new ProductoProveedorException("El precio de compra no puede ser nulo");
-
+                                    if (cantidad == null)
+                                        throw new ProductoProveedorException("La cantidad no puede ser nula");
         this.idProducto = idProducto;
         this.idProveedor = idProveedor;
         this.fechaAdquisicion = fechaAdquisicion;
         this.precioCompra = precioCompra;
+        this.cantidad = cantidad;
+
     }
 
     // Métodos 
@@ -53,7 +57,13 @@ public class ProductoProveedor {
                 this.fechaAdquisicion = fechaAdquisicion;
     }
 
-        // Getters
+    public void actualizarCantidad(Cantidad cantidad) {
+        if (cantidad == null)
+            throw new ProductoProveedorException("La cantidad no puede ser nula");
+        this.cantidad = cantidad;
+    }
+    
+        // Get
      
         
         public String getIdProducto() {
