@@ -9,17 +9,17 @@ package pc_u2_tiendainformatica.domain.valueobjects;
  * @author mezab
  */
 public class Cantidad {
-        private final int valor;
+        private final int cantidad;
 
-    public Cantidad(int valor) {
-        if (valor <= 1) {
+    public Cantidad(int Cantidad) {
+        if (Cantidad < 1) {
             throw new IllegalArgumentException("La cantidad debe ser mayor que 0");
         }
-        this.valor = valor;
+        this.cantidad = Cantidad;
     }
 
-    public int getValor() {
-        return valor;
+    public int getCantidad() {
+        return cantidad;
     }
 }
 
