@@ -8,7 +8,7 @@ package pc_u2_tiendainformatica.domain.port.in;
  *
  * @author Mitzuke
  */
-public class SolicitarSoporteTecnico {
+public class SolicitarSoporteTecnicoCaseUse {
     
     /*Procesa la solicitud de soporte tecnico, adjuntamos los datos necesarios para registrar el servicio
     donde nos de el ID Unico del Servicio TEcnico creado
